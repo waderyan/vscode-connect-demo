@@ -56,12 +56,6 @@ class Todos extends React.Component {
         <List style={this.styles}>
           {todos}
         </List>
-        <select>
-            <option value="1">Q1. Jan - Mar</option>
-            <option value="2">Q2. Apr - Jun</option>
-            <option value="3">Q3. Jul - Sep</option>
-            <option value="4">Q4. Oct - Dec</option>
-        </select>
       </div>
     );
   }

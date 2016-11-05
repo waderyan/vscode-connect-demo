@@ -6,7 +6,7 @@ var DATA = 'data/todos.json';
 var PRETTIFY_WS = 4;
 
 function getAll() {
-    return new Promise((resolve, reject) => {
+    return new Promise(function(resolve, reject) {
         fs.readFile(DATA, function(err, data) {
             resolve(JSON.parse(data));
         });

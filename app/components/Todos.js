@@ -1,6 +1,7 @@
 import React from 'react';
 import List from 'material-ui/lib/lists/list';
 import ListItem from 'material-ui/lib/lists/list-item';
+import SubHeader from 'material-ui/lib/Subheader';
 import IconButton from 'material-ui/lib/icon-button';
 import ChevronRightIcon from 'material-ui/lib/svg-icons/navigation/chevron-right';
 
@@ -14,7 +15,8 @@ class Todos extends React.Component {
       this.styles = {
         float: 'left',
         width: '50%',
-        margin: '3%'
+        margin: '3%',
+        fontSize: '24px'
       };
       this.state = { todos: [] };
   }
@@ -54,6 +56,7 @@ class Todos extends React.Component {
     return (
       <div>
         <List style={this.styles}>
+          <SubHeader>Tasks: {todos.length}</SubHeader>
           {todos}
         </List>
       </div>

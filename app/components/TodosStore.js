@@ -29,6 +29,7 @@ function remove(todo) {
 }
 
 function add(todo) {
+  console.log('add ', todo);
   return new Promise((resolve, reject) => {
     $.ajax({
       url: `${URL}`,

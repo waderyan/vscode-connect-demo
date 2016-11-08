@@ -17,7 +17,7 @@ server.use(function (req, res, next) {
 
 // Routes
 server.get('/todos', function (req, res, next) {
-  database.getAll(function (todos) {
+  database.getAll().then(function (todos) {
     res.send(todos); 
     next();
   });
@@ -25,7 +25,7 @@ server.get('/todos', function (req, res, next) {
 
 server.post('/todos', function(req, res, next) {
   var todo = req.body;
-  database.add(todo, function(todos) {
+  database.add(todo).then(function(todos) {
     res.send(todos);
     next();
   });
@@ -34,7 +34,7 @@ server.post('/todos', function(req, res, next) {
 server.delete('/todos/:id', function(req, res, next) {
   var id = req.params.id;
   
-  database.del(id, function(todos) {
+  database.del(id).then(function(todos) {
     res.send(todos);
     next();
   });

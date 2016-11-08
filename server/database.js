@@ -8,31 +8,41 @@ var PRETTIFY_WS = 4;
 function getAll() {
     return new Promise(function(resolve, reject) {
         fs.readFile(DATA, function(err, data) {
-            resolve(JSON.parse(data));
+            if (err) {
+                reject(err);
+            } else {
+                resolve(JSON.parse(data));
+            }
         });
     });
 }
 
-function commit(data, resolve) {
-    fs.writeFile(DATA, JSON.stringify(data, null, PRETTIFY_WS));
-}
-
-function add(todo, resolve) {
-    getAll(function (data) {
-        data.todos.push(todo);
-        commit(data);
-        resolve(data);
+function commit(data) {
+    return new Promise(function(resolve, reject) {
+        fs.writeFile(DATA, JSON.stringify(data, null, PRETTIFY_WS), function(err) {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(data);
+            }
+        })
     });
 }
 
-function del(id, resolve) {
-    getAll(function (data) {
+function add(todo) {
+    return getAll().then(function (data) {
+        data.todos.push(todo);
+        return commit(data);
+    });
+}
+
+function del(id) {
+    return getAll().then(function (data) {
         var todos = _.filter(data.todos, function (todo) {
             return todo.id != id;
         });
         data.todos = todos;
-        commit(data);
-        resolve(data);
+        return commit(data);
     });
 }
 

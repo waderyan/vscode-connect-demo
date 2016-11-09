@@ -9,6 +9,13 @@
             "request": "attach",
             "name": "Attach to Process",
             "processId": "${command.PickProcess}"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch",
+            "cwd": "${workspaceRoot}/server",
+            "program": "${workspaceRoot}/server/server.js"
         }
     ]
 }

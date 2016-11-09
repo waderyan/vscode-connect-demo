@@ -5,7 +5,9 @@ var promise = require('promise');
 var DATA = 'data/todos.json';
 var PRETTIFY_WS = 4;
 
-function getAll() {
+DATA.
+
+module.exports.getAll = function() {
     return new Promise(function(resolve, reject) {
         fs.readFile(DATA, function(err, data) {
             if (err) {
@@ -17,7 +19,7 @@ function getAll() {
     });
 }
 
-function commit(data) {
+module.exports.commit = function(data) {
     return new Promise(function(resolve, reject) {
         fs.writeFile(DATA, JSON.stringify(data, null, PRETTIFY_WS), function(err) {
             if (err) {
@@ -29,26 +31,25 @@ function commit(data) {
     });
 }
 
-function add(todo) {
+module.exports.add = function(todo) {
     return getAll().then(function (data) {
         data.todos.push(todo);
         return commit(data);
     });
 }
 
-function del(id) {
+module.exports.deleteById = function(id) {
     return getAll().then(function (data) {
-        var todos = _.filter(data.todos, function (todo) {
+
+        var todos = [];
+
+        // TODO remove todo then recommit
+
+        todos = _.filter(data.todos, function(todo) {
             return todo.id != id;
-        });
+        })
+
         data.todos = todos;
         return commit(data);
     });
-}
-
-module.exports = {
-  getAll: getAll,
-  commit: commit,
-  add: add,
-  del: del
 }

@@ -16,6 +16,8 @@ server.use(function (req, res, next) {
 });
 
 // Routes
+
+// Retrieve all todos
 server.get('/todos', function (req, res, next) {
   database.getAll().then(function (todos) {
     res.send(todos); 
@@ -23,6 +25,7 @@ server.get('/todos', function (req, res, next) {
   });
 });
 
+// Add a new todo
 server.post('/todos', function(req, res, next) {
   var todo = req.body;
   database.add(todo).then(function(todos) {
@@ -31,10 +34,11 @@ server.post('/todos', function(req, res, next) {
   });
 });
 
+// Remove an existing todo
 server.delete('/todos/:id', function(req, res, next) {
   var id = req.params.id;
   
-  database.del(id).then(function(todos) {
+  database.deleteById(id).then(function(todos) {
     res.send(todos);
     next();
   });

@@ -6,7 +6,8 @@
   "scripts": {
     "build": "webpack --config webpack.config.js",
     "dev": "webpack-dev-server --config webpack.config.js --open",
-    "serve": "node server/server.js"
+    "serve": "node server/server.js",
+    "dev-serve": "node server/server.js && webpack-dev-server --config webpack.config.js --open"
   },
   "author": "waderyan",
   "license": "MIT",
@@ -17,6 +18,10 @@
     "babel-preset-react": "^6.5.0",
     "babel-preset-stage-0": "^6.5.0",
     "css-loader": "^0.23.1",
+    "eslint": "^3.9.1",
+    "eslint-config-standard": "^6.2.1",
+    "eslint-plugin-promise": "^3.3.1",
+    "eslint-plugin-standard": "^2.0.1",
     "html-webpack-plugin": "^2.14.0",
     "node-sass": "^3.4.2",
     "promise": "^7.1.1",

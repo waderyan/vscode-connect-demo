@@ -21,7 +21,7 @@
         "no-mixed-spaces-and-tabs": 0,
         "no-redeclare": 0,
         "no-this-before-super": 1,
-        "no-undef": 1,
+        "no-undef": 0,
         "no-unreachable": 1,
         "no-use-before-define": 0,
         "constructor-super": 1,

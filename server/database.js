@@ -45,10 +45,6 @@ module.exports.deleteById = function(id) {
 
         // TODO remove todo then recommit
 
-        todos = _.filter(data.todos, function(todo) {
-            return todo.id != id;
-        })
-
         data.todos = todos;
         return commit(data);
     });
